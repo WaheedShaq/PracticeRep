@@ -1,49 +1,15 @@
-var button = document.getElementById("enter");
-var input = document.getElementById("user-input");
-var ul = document.querySelector("ul");
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
 
-//---------------------//
+function setGradient() {
+  body.style.background =
+    "linear-gradient(to right, " + color1.value + ", " + color2.value + ")";
 
-function inputLength() {
-  return input.value.length;
+  css.textContent = body.style.background + ";";
 }
 
-//--------------------//
+color1.addEventListener("input", setGradient);
 
-function createListElement() {
-  if (inputLength() > 0) {
-    var li = document.createElement("li");
-    li.appendChild(document.createTextNode(input.value));
-    ul.appendChild(li);
-    input.value = "";
-  }
-}
-
-//Creating delete button
-
-var delBtn = document.createElement("button");
-delBtn.addEventListener("click", delItem);
-li.append(delBtn);
-
-//------------------------//
-
-function addListAfterClick() {
-  if (inputLength() > 0) {
-    createListElement();
-  }
-}
-
-//------------------------//
-
-function addListAfterKeyPress(event) {
-  if (inputLength() > 0 && event.keyCode === 13) {
-    createListElement();
-  }
-}
-
-//------------------------//
-button.addEventListener("click", addListAfterClick());
-
-input.addEventListener("keypress", addListAfterKeyPress);
-
-// Unfinished shopping list exercise.
+color2.addEventListener("input", setGradient);
